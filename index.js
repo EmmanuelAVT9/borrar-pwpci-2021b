@@ -5,7 +5,7 @@ import http from 'http';
 const server = http.createServer((req,res)=>{
     console.log("> Se ha recibido una peticion.");
     // Registrar informacion de la peticion
-    console.log(`🤜🤜 Informacion de la peticion`);
+    console.log(`🤜🤜 Información de la peticion`);
     console.log(`🤜url: ${req.url}`);
     console.log(`🤜Request Method: ${req.method}`);
     console.log(`🤜Plataforma del cliente: ${req.headers["sec-ch-ua-platform"]}`);
