@@ -8,14 +8,18 @@ const server = http.createServer((req,res)=>{
     console.log(`🤜🤜 Informacion de la peticion`);
     console.log(`🤜url: ${req.url}`);
     console.log(`🤜Request Method: ${req.method}`);
-    console.log(`🤜Plataforma del cliente: ${req.headers["sec-ch-ua-platform"]}`);
-    // Respondemos
-    res.write("Esta es la respuesta del servidor.");
+    // Estableciendo el tipo de contenido que se entregara al cliente
+    res.setHeader('Content-Type', 'text/html');
+    // Envio el contenido 
+    res.write("<html>");
+    res.write("<head><title>My app</title></head>");
+    res.write(`<body><h1>Hello world from the server &#128519</h1><p style="color:red">Recurso Solicitado: ${req.url}</p></body>`);
+    res.write("</html>");
     // Terminar la conexion
     res.end();
 });
 //
 //3.Pongo a trabajar el servidor
-server.listen(3000,"192.168.56.1",()=>{
-    console.log("👩‍🍳Servidor escuchando en http://192.168.56.1:3000");
+server.listen(3000,"0.0.0.0",()=>{
+    console.log("👩‍🍳Servidor escuchando en http://localhost:3000");
 })
