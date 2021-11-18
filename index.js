@@ -1,7 +1,7 @@
 // 1. Importar el module http
 import { fstat } from 'fs';
 import http from 'http';
-
+import fs from "fs";
 //2. Crear el servidor
 const server = http.createServer((req,res)=>{
     //Obteniendo el recurso solicitado
@@ -49,20 +49,12 @@ const server = http.createServer((req,res)=>{
         req.on('end', ()=>{
             const parsedBody = Buffer.concat(body).toString();
             const message = parsedBody.split('=')[1];
-            //1. estableciendo el tipo de retoirno
-            // como html
-            res.write(`
-            <html>
-            <head>
-                <title>Received Message</title>
-            </head>
-            <body>
-                <h1>Received Message</h1>
-                <p>Thank you!!!</p>
-                <p>The message we received was this: ${message}</p>
-            </body>
-        </htm>
-            `);
+            //Guardando el mensaje en un archivo
+            fs.writeFileSync('message.txt',message);
+            // Establecer el status code
+            res.statusCode = 302;
+            // Estableciendo la ruta de direcciones
+            res.setHeader('Location','/');
             // Finaliza conexión
             return res.end()
         });
