@@ -2,6 +2,13 @@
 import http from "http";
 // 2. Importando el module de routes
 import routes from "./routes.js" 
+// 3. Importando express
+// $ npm i express -S
+import Express from 'express'
+
+// Crear una instancia de Expres
+const app = Express(); // (req, res, next)=>{} event handler
+
 /**
  * Codigos de emojis
  * Ref: https://www.w3schools.com/charsets/ref_emoji.asp
