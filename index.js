@@ -6,6 +6,8 @@ import routes from "./routes.js"
 // $ npm i express -S
 import Express from 'express'
 
+console.log(`Variable de entorno: ${process.env.NODE_ENV}`);
+
 // Crear una instancia de Expres
 const app = Express(); // (req, res, next)=>{} event handler
 
@@ -13,6 +15,9 @@ const app = Express(); // (req, res, next)=>{} event handler
 // desde un cliente
 app.use(Express.urlencoded({extended: false}));
 
+// 2 Crear el servidor tomando como
+// manejador de peticiones a express
+const server = http.createServer(app);
 // Loggin de peticiones
 app.use((req,_,next)=>{
     console.log(`📞 Se ha realizado la petición:`)
