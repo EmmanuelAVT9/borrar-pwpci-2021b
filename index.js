@@ -15,12 +15,10 @@ const app = Express(); // (req, res, next)=>{} event handler
 // desde un cliente
 app.use(Express.urlencoded({extended: false}));
 
-// 2 Crear el servidor tomando como
-// manejador de peticiones a express
-const server = http.createServer(app);
 // Loggin de peticiones
 app.use((req,_,next)=>{
-    console.log(`📞 Se ha realizado la petición:`)
+    console.log(`📞 Se ha realizado la petición: "${req.method} : ${req.path}"`);
+    next();
 });
 // Se debe colocar primero ya que el orden de registro
 // determina el orden de verificaciòn
